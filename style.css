@@ -110,6 +110,7 @@ p {
 .hero-flex-end { display: flex; justify-content: flex-end; }
 .hero-description { max-width: 520px; margin-top: 20px; }
 
+
 /* Banner Image */
 .full-banner { width: 100%; border-radius: 20px; height: 550px; object-fit: cover; margin-bottom: 60px; }
 
@@ -1511,6 +1512,7 @@ section {
   justify-content: space-between;
   align-items: stretch;
   gap: 25px;
+  
 }
 
 .mod-column {
@@ -1518,11 +1520,12 @@ section {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 }
 
 .mod-card {
   flex: 1; 
-  background: #ffffff;
+  background: #561cba;
   padding: 25px;
   border-radius: 12px;
   border: 1px solid #f0f0f0;
@@ -1534,13 +1537,13 @@ section {
 
 /* Item Titles & Colors */
 .mod-card h4 { font-weight: 700; margin-bottom: 15px; }
-.title-orange { color: #e67e22; }
-.title-gray { color: #7f8c8d; }
-.title-blue { color: #2980b9; }
-.title-gold { color: #d4ac0d; }
+.title-orange { color: #f3de56; }
+.title-gray { color: #e4712a; }
+.title-blue { color: #b99529; }
+.title-gold { color: #26ce8b; }
 
 .mod-card ul { list-style: none; padding: 0; margin: 0; }
-.mod-card ul li { font-size: 14px; color: #555; margin-bottom: 8px; padding-left: 15px; position: relative; }
+.mod-card ul li { font-size: 14px; color: #f2efef; margin-bottom: 8px; padding-left: 15px; position: relative; }
 .mod-card ul li::before { content: "•"; position: absolute; left: 0; color: #6e55ff; font-weight: bold; }
 
 .mod-center { flex: 1.2; display: flex; flex-direction: column; justify-content: center; align-items: center; }
@@ -1579,3 +1582,4 @@ section {
   .modular-layout, .feature-grid { flex-direction: column; grid-template-columns: 1fr; }
   .mod-center { order: -1; margin-bottom: 30px; }
 }
+
