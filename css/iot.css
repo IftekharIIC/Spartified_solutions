@@ -1036,3 +1036,648 @@
 #iot-solutions .box-grid {
     margin-top: 20px;   /* subtle separation from text */
 }
+.flex-hero {
+  position: relative;
+  padding: 160px 0 140px;
+  background: #0b0f1a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Canvas */
+#globeCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Content above globe */
+.flex-hero-grid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography */
+.flex-hero-content h1 {
+  font-family: var(--h-font);
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.accent-text { color: #38bdf8; }
+
+.hero-intro {
+  font-size: 16.8px;
+  line-height: 1.8;
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  max-width: 680px;
+}
+
+.hero-highlight {
+  font-size: 15.6px;
+  line-height: 1.75;
+  color: #e5e7eb;
+  margin-bottom: 22px;
+  max-width: 700px;
+}
+
+.hero-highlight strong {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #globeCanvas { opacity: 0.35; }
+  .flex-hero-content h1 { font-size: 38px; }
+}
+/* =========================================================
+   SPOG SECTION – TEXT RIGHT, IMAGE LEFT (FIXED)
+========================================================= */
+
+.spog-deep-section {
+    position: relative;
+    padding: 160px 0;
+    background: #0b0f1a;
+    overflow: hidden;
+}
+
+/* LEFT BACKGROUND IMAGE */
+.spog-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/spog.jpg"); /* ✅ spog.jpg */
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+}
+
+/* DARK OVERLAY – STRONG ON RIGHT */
+.spog-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(11,15,26,0.15) 0%,
+        rgba(11,15,26,0.75) 45%,
+        rgba(11,15,26,0.95) 65%,
+        rgba(11,15,26,1) 100%
+    );
+}
+
+/* GRID */
+.spog-grid {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end; /* 🔥 FORCE RIGHT */
+}
+
+/* RIGHT TEXT BLOCK */
+.spog-content {
+    width: 48%;
+    min-width: 520px;
+    color: #ffffff;
+}
+
+/* TEXT */
+.spog-content h2 {
+    font-family: var(--h-font);
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.spog-content .accent-text {
+    color: #38bdf8;
+}
+
+.spog-intro {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+.spog-points p {
+    font-size: 15.8px;
+    line-height: 1.8;
+    color: #e5e7eb;
+    margin-bottom: 22px;
+}
+
+.spog-points strong {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1024px) {
+    .spog-grid {
+        justify-content: center;
+    }
+
+    .spog-content {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .spog-bg {
+        opacity: 0.35;
+        background-position: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .spog-content h2 {
+        font-size: 34px;
+    }
+
+    .spog-intro,
+    .spog-points p {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   GTP PROXY – PRODUCT SECTION (TEXT LEFT, IMAGE RIGHT)
+========================================================= */
+
+.product-section {
+    position: relative;
+    padding: 160px 0 150px;
+    background: #0b0f1a;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* RIGHT BACKGROUND IMAGE */
+.product-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52%;
+    height: 100%;
+    background-image: url("../img/GTP.jpg"); 
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    opacity: 0.65;
+}
+
+/* Dark gradient overlay for readability */
+.product-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to left,
+        rgba(11, 15, 26, 0.15),
+        rgba(11, 15, 26, 0.95)
+    );
+}
+
+/* GRID */
+.product-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr;
+}
+
+/* CONTENT */
+.product-content {
+    max-width: 640px;
+}
+
+/* HEADING */
+.product-content h2 {
+    font-family: var(--h-font);
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 26px;
+}
+
+.accent-text {
+    color: #38bdf8;
+}
+
+/* INTRO */
+.product-intro {
+    font-size: 16.8px;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 28px;
+}
+
+/* POINTS */
+.product-point {
+    font-size: 15.6px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 22px;
+}
+
+.product-point strong {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .product-bg {
+        width: 100%;
+        opacity: 0.4;
+    }
+
+    .product-content h2 {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 640px) {
+    .product-section {
+        padding: 120px 0 100px;
+    }
+
+    .product-content h2 {
+        font-size: 34px;
+    }
+
+    .product-intro,
+    .product-point {
+        font-size: 15px;
+    }
+}
+/* =========================================================
+   TEST AUTOMATION – CINEMATIC BG IMAGE
+========================================================= */
+
+.iot-feature-section.test-automation {
+    position: relative;
+    min-height: 680px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(11,15,26,0.15) 0%,
+        rgba(11,15,26,0.65) 45%,
+        rgba(11,15,26,0.92) 65%,
+        #0b0f1a 100%
+      ),
+      url("../img/test-auto.jpg");
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* TEXT WRAPPER */
+.feature-content {
+    max-width: 620px;
+    padding: 120px 90px;
+    color: #ffffff;
+}
+
+/* TYPOGRAPHY */
+.feature-content h2 {
+    font-family: var(--h-font);
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 26px;
+}
+
+.accent-text {
+    color: #38bdf8;
+}
+
+.feature-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 26px;
+}
+
+.feature-point {
+    font-size: 15.6px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 22px;
+}
+
+.feature-point strong {
+    color: #38bdf8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .feature-content {
+        padding: 90px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .iot-feature-section.test-automation {
+        background-position: center;
+    }
+
+    .feature-content {
+        padding: 80px 40px;
+        max-width: 100%;
+    }
+
+    .feature-content h2 {
+        font-size: 38px;
+    }
+}
+/* =========================================================
+   SMART API TRANSFORMER – FIXED VERSION
+========================================================= */
+
+.iot-feature-section.smart-api {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+
+    /* 🔥 CORRECT BACKGROUND STACK */
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(11,15,26,0.95) 0%,
+        rgba(11,15,26,0.85) 35%,
+        rgba(11,15,26,0.55) 55%,
+        rgba(11,15,26,0.15) 70%,
+        rgba(11,15,26,0.05) 100%
+      ),
+      url("../img/smart-api.jpg"); /* 🔴 CHECK PATH */
+
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+}
+
+/* TEXT BLOCK */
+.iot-feature-section.smart-api .feature-content {
+    max-width: 680px;
+    padding: 120px 100px;
+    color: #ffffff;
+}
+
+/* TYPOGRAPHY */
+.iot-feature-section.smart-api h2 {
+    font-family: var(--h-font);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 28px;
+}
+
+.accent-text {
+    color: #38bdf8;
+}
+
+.feature-intro {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 28px;
+}
+
+.feature-point {
+    font-size: 15.6px;
+    line-height: 1.75;
+    color: #f1f5f9;
+    margin-bottom: 22px;
+}
+
+.feature-point strong {
+    color: #38bdf8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .iot-feature-section.smart-api .feature-content {
+        padding: 90px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .iot-feature-section.smart-api {
+        background-position: center;
+    }
+
+    .iot-feature-section.smart-api .feature-content {
+        padding: 80px 40px;
+        max-width: 100%;
+    }
+
+    .iot-feature-section.smart-api h2 {
+        font-size: 36px;
+    }
+}
+
+/* =========================================================
+   INSIGHTS AI SECTION
+========================================================= */
+
+.iot-feature-section.insights-ai {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    /* 🔥 DARK LEFT → IMAGE RIGHT */
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(11,15,26,0.95) 0%,
+        rgba(11,15,26,0.9) 40%,
+        rgba(11,15,26,0.65) 60%,
+        rgba(11,15,26,0.25) 75%,
+        rgba(11,15,26,0.05) 100%
+      ),
+      url("../img/insights-ai.jpg"); /* ✅ image path */
+
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+/* TEXT BLOCK */
+.iot-feature-section.insights-ai .feature-content {
+    max-width: 680px;
+    padding: 120px 100px;
+    color: #ffffff;
+}
+
+/* HEADINGS */
+.iot-feature-section.insights-ai h2 {
+    font-family: var(--h-font);
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 26px;
+}
+
+/* TEXT */
+.feature-intro {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 26px;
+}
+
+.feature-point {
+    font-size: 15.6px;
+    line-height: 1.75;
+    color: #f1f5f9;
+}
+
+.feature-point strong {
+    color: #38bdf8;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1024px) {
+    .iot-feature-section.insights-ai .feature-content {
+        padding: 90px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .iot-feature-section.insights-ai {
+        background-position: center;
+    }
+
+    .iot-feature-section.insights-ai .feature-content {
+        padding: 80px 40px;
+        max-width: 100%;
+    }
+
+    .iot-feature-section.insights-ai h2 {
+        font-size: 36px;
+    }
+}
+/* =====================================================
+   FINAL GLOBAL SPACING FIX (SAFE – NO REMOVAL)
+===================================================== */
+
+section {
+  scroll-snap-align: start;
+}
+
+/* Compact vertical spacing */
+.iot-hero,
+.iot-box-section,
+.iot-breaks-section,
+.iot-architecture,
+.why-spartified,
+.demo-contact,
+.spog-deep-section,
+.product-section,
+.iot-feature-section,
+.iot-feature-section.smart-api,
+.iot-feature-section.insights-ai {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+
+/* Remove artificial fullscreen gaps */
+.iot-feature-section.smart-api,
+.iot-feature-section.insights-ai {
+    min-height: auto !important;
+}
+
+/* Inner content tightening */
+.feature-content {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+/* Architecture */
+.arch-title { margin-bottom: 64px !important; }
+
+/* Why Spartified */
+.why-title { margin-bottom: 56px !important; }
+.why-grid { gap: 56px !important; }
+
+/* IoT Solutions */
+#iot-solutions .section-intro {
+    margin-bottom: 56px !important;
+}
+#iot-solutions .box-grid {
+    margin-top: 12px !important;
+}
+
+/* Contact */
+.iot-contact,
+.demo-contact {
+    padding-top: 110px !important;
+    padding-bottom: 110px !important;
+}
+
+/* Mobile tighter */
+@media (max-width: 768px) {
+    .iot-hero,
+    .iot-box-section,
+    .iot-breaks-section,
+    .iot-architecture,
+    .why-spartified,
+    .demo-contact,
+    .spog-deep-section,
+    .product-section,
+    .iot-feature-section {
+        padding-top: 72px !important;
+        padding-bottom: 72px !important;
+    }
+
+    .feature-content {
+        padding: 60px 36px !important;
+    }
+}
+
+/* =====================================================
+   HERO SECTION – KEEP FULL SIZE (OVERRIDE)
+===================================================== */
+
+.flex-hero,
+.iot-hero {
+    padding-top: 160px !important;
+    padding-bottom: 140px !important;
+    min-height: 100vh !important;     /* 🔥 FULL SCREEN */
+    display: flex;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+/* Do NOT compact hero on mobile */
+@media (max-width: 768px) {
+    .flex-hero,
+    .iot-hero {
+        padding-top: 120px !important;
+        padding-bottom: 120px !important;
+        min-height: 100vh !important;
+    }
+}
