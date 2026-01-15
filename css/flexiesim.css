@@ -1,0 +1,152 @@
+/* =========================================================
+   FLEXIESIM PAGE – FRAUDPROTECT BLACK THEME
+========================================================= */
+
+/* =========================================================
+   FLEXIESIM HERO – ANIMATED GLOBE (FRAUDPROTECT)
+========================================================= */
+
+.flex-hero {
+    position: relative;
+    padding: 160px 0 140px;
+    background: #0b0f1a;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Canvas covers background */
+/* Canvas covers background (RIGHT SHIFTED GLOBE) */
+#globeCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Content above canvas */
+.flex-hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.2fr;
+}
+
+/* TEXT */
+.flex-hero-content h1 {
+    font-family: var(--h-font);
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 26px;
+}
+
+.accent-text {
+    color: #38bdf8;
+}
+
+.hero-intro {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: #cbd5e1;
+    margin-bottom: 28px;
+    max-width: 640px;
+}
+
+.hero-highlight {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 22px;
+    max-width: 680px;
+}
+
+.hero-highlight strong {
+    color: #38bdf8;
+}
+
+/* Mobile fallback */
+@media (max-width: 768px) {
+    #globeCanvas {
+        opacity: 0.35;
+    }
+
+    .flex-hero-content h1 {
+        font-size: 38px;
+    }
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================ */
+
+.flex-hero-content h1 {
+    font-family: var(--h-font);
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 28px;
+}
+
+.accent-text {
+    color: #38bdf8;
+}
+
+.hero-intro {
+    font-size: 16.8px;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    max-width: 680px;
+}
+
+.hero-highlight {
+    font-size: 15.6px;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 22px;
+    max-width: 700px;
+}
+
+.hero-highlight strong {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* ===============================
+   OPTIONAL CTA (IF NEEDED LATER)
+================================ */
+
+.flex-hero .btn-touch {
+    margin-top: 36px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1024px) {
+    .flex-hero {
+        padding: 120px 0 110px;
+    }
+
+    .flex-hero-content h1 {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 640px) {
+    .flex-hero {
+        padding: 100px 0 90px;
+    }
+
+    .flex-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-intro,
+    .hero-highlight {
+        font-size: 15px;
+    }
+}

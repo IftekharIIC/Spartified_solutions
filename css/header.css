@@ -1,0 +1,152 @@
+/* ===============================
+   HEADER – EXACT INDEX MATCH
+================================ */
+
+.header {
+    height: 100px;
+    background: #fff;
+    border-bottom: 1px solid #f1f5f9;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===============================
+   LOGO (GRADIENT MASK – INDEX)
+================================ */
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 230px;
+    height: 70px;
+    display: block;
+    background: linear-gradient(
+        90deg,
+        #1e66ff,
+        #7c3aed,
+        #1e66ff
+    );
+    background-size: 200% auto;
+
+    -webkit-mask-image: url("../img/logo.png");
+    mask-image: url("../img/logo.png");
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* hover animation */
+.logo-img:hover {
+    animation: logoGradientMove 2s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(30,102,255,0.45));
+}
+
+@keyframes logoGradientMove {
+    from { background-position: 0% center; }
+    to   { background-position: 200% center; }
+}
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a {
+    margin: 0 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+/* gradient underline */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #1e66ff, #7c3aed);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #1e66ff;
+}
+
+/* ===============================
+   CTA BUTTON
+================================ */
+
+.btn-touch {
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: var(--h-font);
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(
+        90deg,
+        #1e66ff,
+        #7c3aed,
+        #1e66ff
+    );
+    background-size: 200% auto;
+    transition: 
+        background-position 0.4s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-touch:hover {
+    background-position: 100% center;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(30,102,255,0.35);
+}
+/* HEADER FONT LOCK */
+.header,
+.header * {
+    font-family: var(--h-font);
+    font-size: 15px;
+    line-height: normal;
+}
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1024px) {
+    .main-nav {
+        display: none;
+    }
+}

@@ -1,0 +1,59 @@
+/* ===============================
+   FOOTER – FINAL CLEAN VERSION
+================================ */
+
+/* Footer */
+.footer-dark { background: var(--footer-bg); color: #fff; padding: 100px 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; }
+.f-brand img { height: 35px; margin-bottom: 25px; }
+.footer-grid h4 { font-family: var(--h-font); font-size: 22px; margin-bottom: 25px; }
+.footer-grid a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; font-size: 16px; }
+
+@media (max-width: 1024px) {
+    .hero-title { font-size: 40px; }
+    .split-layout, .solutions-grid, .contact-split, .footer-grid { grid-template-columns: 1fr; }
+    .form-card-floating { margin-left: 0; padding: 40px; }
+}
+
+/* ===== FOOTER QUICK LINKS – GRADIENT UNDERLINE (VERTICAL SAFE) ===== */
+
+.f-links a {
+    position: relative;
+    padding-bottom: 6px;
+    width: fit-content;
+    display: block; /* IMPORTANT: keeps vertical stack */
+}
+
+.f-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        #1e66ff,
+        #7c3aed
+    );
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.f-links a:hover::after {
+    width: 100%;
+}
+
+.f-links a:hover {
+    color: #fff;
+}
+
+/* ===============================
+   RESPONSIVE – ONLY MOBILE
+================================ */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}

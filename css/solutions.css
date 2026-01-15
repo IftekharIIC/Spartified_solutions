@@ -1,0 +1,94 @@
+/* ===============================
+   SOLUTIONS PAGE STYLES
+   =============================== */
+
+/* ---------- SECTION WRAPPER ---------- */
+
+.strategy-grid-section {
+    padding: 90px 0 110px;
+    background: #ffffff;
+}
+
+/* ---------- SECTION HEADER ---------- */
+
+.section-head-center {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-head-center h2 {
+    font-family: var(--h-font);
+    font-size: 42px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* ---------- SOLUTIONS GRID ---------- */
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* ---------- SOLUTION CARD ---------- */
+
+.sol-card {
+    background: #f8fafc;
+    padding: 46px 36px;
+    border-radius: 14px;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+/* Hover effect */
+.sol-card:hover {
+    background: #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0 28px 55px rgba(0,0,0,0.08);
+}
+
+/* Card title */
+.sol-card h3 {
+    font-family: var(--h-font);
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Card description */
+.sol-card p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1024px) {
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-head-center h2 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 640px) {
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head-center h2 {
+        font-size: 30px;
+    }
+
+    .sol-card {
+        padding: 38px 28px;
+    }
+}

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IoT Solutions – Spartified</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Onest&display=swap" rel="stylesheet">
+
+  <!-- CSS (empty for now – next step) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/iot.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container nav-wrap">
+
+    <a href="index.html" class="logo-link" aria-label="Home">
+  <span class="logo-img"></span>
+</a>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="solutions.html" class="active">Solutions</a>
+      <a href="customers.html">Customers</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="contact.html" class="btn-touch">Get in Touch</a>
+
+  </div>
+</header>
+
+<section class="iot-hero">
+  <div class="container iot-hero-grid">
+
+    <!-- LEFT -->
+    <div class="iot-hero-content">
+      <span class="label-box">IOT PLATFORM</span>
+
+      <h1>
+        End-to-end IoT connectivity<br>
+        <span class="muted-text">
+          built for scale, security & intelligence
+        </span>
+      </h1>
+
+      <p class="hero-desc">
+        Spartified enables enterprises and operators to deploy,
+        manage and monetize IoT devices globally with secure,
+        flexible and intelligent connectivity solutions.
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="iot-hero-visual">
+      <canvas id="iotNetwork"></canvas>
+    </div>
+
+  </div>
+</section>
+<script>
+const canvas = document.getElementById("iotNetwork");
+const ctx = canvas.getContext("2d");
+
+let w, h;
+function resize() {
+  w = canvas.width = canvas.offsetWidth;
+  h = canvas.height = canvas.offsetHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+/* ---------------- NODES ---------------- */
+const nodes = [];
+const NODE_COUNT = 85;
+
+for (let i = 0; i < NODE_COUNT; i++) {
+  nodes.push({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+/* ---------------- MOUSE ---------------- */
+const mouse = {
+  x: null,
+  y: null,
+  radius: 160
+};
+
+canvas.addEventListener("mousemove", e => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+});
+
+canvas.addEventListener("mouseleave", () => {
+  mouse.x = null;
+  mouse.y = null;
+});
+
+/* ---------------- DRAW LOOP ---------------- */
+function draw() {
+  ctx.clearRect(0, 0, w, h);
+
+  /* draw nodes */
+  nodes.forEach(n => {
+    n.x += n.vx;
+    n.y += n.vy;
+
+    if (n.x < 0 || n.x > w) n.vx *= -1;
+    if (n.y < 0 || n.y > h) n.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+  });
+
+  /* node-to-node lines */
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 110) {
+        ctx.strokeStyle = `rgba(56,189,248,${1 - dist / 110})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  /* 🔥 CURSOR TO NODE CONNECTION */
+  if (mouse.x !== null && mouse.y !== null) {
+    nodes.forEach(n => {
+      const dx = n.x - mouse.x;
+      const dy = n.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < mouse.radius) {
+        ctx.strokeStyle = `rgba(124,58,237,${1 - dist / mouse.radius})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+    });
+
+    /* cursor glow */
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "#7c3aed";
+    ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+<!-- ================= WHY MULTI-CARRIER BREAKS ================= -->
+<section class="iot-breaks-section dark">
+  <div class="container">
+
+    <h2 class="breaks-title">
+      Why Multi-Carrier IoT Connectivity Breaks at Scale?
+    </h2>
+
+    <div class="breaks-grid">
+
+      <!-- BOX 1 -->
+      <div class="breaks-box">
+        <div class="breaks-icon">
+          <img src="img/icons/fragmented.svg" alt="Fragmented Operations">
+        </div>
+        <h3>Fragmented operations</h3>
+        <p>
+          Managing multiple carriers without a connectivity management
+          platform results in operational silos, limited cost transparency,
+          manual reconciliation, and minimal optimization leverage across
+          device lifecycles.
+        </p>
+      </div>
+
+      <!-- BOX 2 -->
+      <div class="breaks-box">
+        <div class="breaks-icon">
+          <img src="img/icons/visibility.svg" alt="Real Time Visibility">
+        </div>
+        <h3>Lack of Real time visibility</h3>
+        <p>
+          Without unified IoT connectivity management, enterprises and
+          MNOs lack real-time insight into device health, usage patterns,
+          network performance, and true cost drivers.
+        </p>
+      </div>
+
+      <!-- BOX 3 -->
+      <div class="breaks-box">
+        <div class="breaks-icon">
+          <img src="img/icons/commoditized.svg" alt="Commoditized Connectivity">
+        </div>
+        <h3>Commoditized Connectivity</h3>
+        <p>
+          Rising operational overhead and compliance complexity force
+          IoT connectivity into price-based competition, limiting service
+          differentiation and leaving MNO monetization opportunities unrealized.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= IOT CONNECTIVITY DIAGRAM ================= -->
+<section class="iot-architecture">
+  <div class="container">
+
+    <h2 class="arch-title">Spartified IoT Connectivity Suite</h2>
+
+    <div class="arch-wrapper">
+
+      <!-- IOT DEVICES -->
+      <div class="arch-devices">
+        <h4>IoT Devices</h4>
+
+        <div class="device-row">
+          <div class="device">
+            <span class="svg-slot"></span>
+          </div>
+
+          <div class="device core">
+            <span class="svg-slot"></span>
+          </div>
+
+          <div class="device">
+            <span class="svg-slot"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-down"></div>
+
+      <!-- MNO NETWORK -->
+      <div class="arch-box large">
+        <h4 class="box-title">MNO Network</h4>
+
+        <div class="inner-row">
+          <div class="inner-box">
+            <span class="svg-slot small"></span>
+            <span>MNO CMP</span>
+          </div>
+
+          <div class="inner-box highlight">
+            <span class="svg-slot small"></span>
+            <span>MNO Network API Platform</span>
+          </div>
+
+          <div class="inner-box">
+            <span class="svg-slot small"></span>
+            <span>GTP Proxy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-down"></div>
+
+      <!-- SPOG -->
+      <div class="arch-box spog">
+        <div class="spog-row">
+          <span class="svg-slot medium"></span>
+
+          <div>
+            <h4>Single Pane of Glass</h4>
+            <p>IoT Device Management Platform</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-down"></div>
+
+      <!-- CENTRALIZED CMP -->
+      <div class="arch-box cmp">
+        <h4>Centralized CMP</h4>
+
+        <div class="cmp-grid">
+          <div class="cmp-box">
+            <span class="svg-slot small"></span>
+            <span>API Gateway</span>
+          </div>
+
+          <div class="cmp-box green">
+            <span class="svg-slot small"></span>
+            <span>Enterprise Portal</span>
+          </div>
+
+          <div class="cmp-box green">
+            <span class="svg-slot small"></span>
+            <span>Automation Suite</span>
+          </div>
+
+          <div class="cmp-box">
+            <span class="svg-slot small"></span>
+            <span>Automation Rule Engine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-down"></div>
+
+      <!-- ENTERPRISE -->
+      <div class="arch-box enterprise">
+        <span class="svg-slot medium"></span>
+        <h4>Enterprise IoT Application</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SLIDE 3 – SOLUTIONS ================= -->
+<section class="iot-box-section" id="iot-solutions">
+  <div class="container">
+
+    <h2 class="section-title">
+      Stop Managing Connectivity. Start Orchestrating It.
+    </h2>
+
+    <p class="section-intro">
+  Spartified empowers MNOs and enterprises to simplify multi-carrier management,
+  gain real-time visibility, and unlock differentiated value beyond data rates.
+</p>
+
+    <div class="box-grid">
+
+      <!-- FLEXIESIM -->
+      <div class="box-card">
+        <h3>FLEXIeSIM</h3>
+        <p>
+          Smart eSIM management for global IoT connectivity,
+          enabling seamless multi-carrier orchestration at scale.
+        </p>
+
+        <a href="flexiesim.html" class="learn-more">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- GTP PROXY -->
+      <div class="box-card">
+        <h3>GTP Proxy</h3>
+        <p>
+          Route IoT traffic intelligently to optimize costs,
+          performance, and roaming efficiency across networks.
+        </p>
+
+        <a href="#gtp-proxy" class="learn-more">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- TEST AUTOMATION SUITE -->
+      <div class="box-card">
+        <h3>Test Automation Suite</h3>
+        <p>
+          Designed for faster testing without sacrificing
+          enterprise-grade reliability and network assurance.
+        </p>
+
+        <a href="#test-automation" class="learn-more">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- SMART API TRANSFORMER -->
+      <div class="box-card">
+        <h3>Smart API Transformer</h3>
+        <p>
+          Accelerate API development and integration with
+          AI-powered automation and intelligent transformations.
+        </p>
+
+        <a href="#smart-api" class="learn-more">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- INSIGHT AI -->
+      <div class="box-card">
+        <h3>Insight AI</h3>
+        <p>
+          AI-powered insights to optimize IoT performance,
+          uncover value, and drive smarter business decisions.
+        </p>
+
+        <a href="#insight-ai" class="learn-more">
+          Learn more →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY SPARTIFIED ================= -->
+<section class="why-spartified">
+  <div class="container">
+
+    <h2 class="why-title">Why Spartified ?</h2>
+
+    <div class="why-grid">
+
+      <!-- ITEM 1 -->
+      <div class="why-card">
+        <span class="why-icon">
+          <!-- SVG ICON SLOT -->
+        </span>
+
+        <h3>Intelligent Connectivity Orchestration</h3>
+
+        <p>
+          Unify eSIM, multi-carrier, and device operations
+          centrally through a single intelligent platform.
+        </p>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="why-card">
+        <span class="why-icon">
+          <!-- SVG ICON SLOT -->
+        </span>
+
+        <h3>Operational Excellence</h3>
+
+        <p>
+          Manage 10× more customers efficiently without
+          scaling operations or increasing staff overhead.
+        </p>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="why-card">
+        <span class="why-icon">
+          <!-- SVG ICON SLOT -->
+        </span>
+
+        <h3>AI-Driven Insights</h3>
+
+        <p>
+          Unlock growth, avoid downtime, stay compliant,
+          and minimize operational and connectivity costs.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT / REQUEST DEMO ================= -->
+<section class="demo-contact">
+
+  <div class="container demo-grid">
+
+    <!-- LEFT CONTENT -->
+    <div class="demo-left">
+      <span class="demo-label">CONTACT US</span>
+
+      <h2 class="demo-title">
+        Talk to our <span>Experts</span>
+      </h2>
+
+      <p class="demo-desc">
+        Discover how Spartified safeguards telecom and IoT
+        ecosystems with secure, scalable, and intelligent platforms.
+      </p>
+
+      <ul class="demo-points">
+        <li>Enterprise-grade IoT & connectivity platforms</li>
+        <li>Real-time monitoring, orchestration & control</li>
+        <li>Trusted by global telecom operators</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT FORM CARD -->
+    <div class="demo-card">
+
+      <h3 class="card-title">Request a Demo</h3>
+      <p class="card-subtitle">
+        Our team will get back to you within 24 hours.
+      </p>
+
+      <form class="demo-form">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Business Email" required>
+        <input type="text" placeholder="Company Name">
+        <textarea placeholder="Tell us about your requirements"></textarea>
+
+        <button type="submit" class="demo-btn">
+          Send Enquiry
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-dark">
+  <div class="container footer-grid">
+
+    <div class="f-brand">
+      <span class="logo-img"></span>
+      <p>
+        Spartified delivers intelligent telecom,
+        AI and IoT platforms for global enterprises.
+      </p>
+    </div>
+
+    <div class="f-links">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="f-links">
+      <h4>Resources</h4>
+      <a href="news.html">News</a>
+      <a href="#">Documentation</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

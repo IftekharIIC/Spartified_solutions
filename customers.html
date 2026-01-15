@@ -4,21 +4,32 @@
 <meta charset="UTF-8">
 <title>Customers – Spartified</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/customers.css">
+<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="container nav-wrap">
-    <a href="index.html"><span class="logo-img"></span></a>
+
+    <a href="index.html" class="logo-link" aria-label="Home">
+  <span class="logo-img"></span>
+</a>
+
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="solutions.html">Solutions</a>
-      <a href="customers.html" class="active">Customers</a>
+      <a href="customers.html"class="active">Customers</a>
       <a href="news.html">News</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <a href="contact.html" class="btn-touch">Get in Touch</a>
+
   </div>
 </header>
 
@@ -40,9 +51,31 @@
 
 <footer class="footer-dark">
   <div class="container footer-grid">
+
     <div class="f-brand">
-      <a href="index.html"><span class="logo-img"></span></a>
+      <a href="index.html">
+        <span class="logo-img"></span>
+      </a>
+      <p>
+        Spartified delivers intelligent telecom,
+        AI and security platforms for global operators.
+      </p>
     </div>
+
+    <div class="f-links">
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="customers.html">Customers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="f-links">
+      <h4>Resources</h4>
+      <a href="news.html">News</a>
+      <a href="#">Documentation</a>
+    </div>
+
   </div>
 </footer>
 
